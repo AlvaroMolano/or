@@ -2,11 +2,11 @@
 require 'scraperwiki.php';
 
 require 'scraperwiki/simple_html_dom.php';
-//static $counter = 0;
+static $counter = 0;
 //scraperwiki::save_sqlite( array( 'url' ), array( 'count' => $counter, 'url' => 'http://tunein.com' ), 'pages' );
 //scrape_related('http://tunein.com/radio/Music-g1/');
 
-$counter = scraperwiki::get_var('up_to') + 1;
+//$counter = scraperwiki::get_var('up_to') + 1;
 
 while( $result = scraperwiki::select( "* from pages where count = '$counter'" ) ) {
     scrape_stations( $result[0]['url'] );
@@ -32,7 +32,9 @@ function scrape_related( $url ) {
 function scrape_stations( $url ) {
     $html_content = scraperwiki::scrape( $url );
     $html = str_get_html($html_content);
+    print $html;
     foreach ( $html->find('tr.result') as $result ) {
+        print $result;
         $logo = $result->find('img.logo',0)->src;
         if ( preg_match( '/\d{4,6}/', $result->find('a.play',0)->href, $links ) ) {
             $stationID = $links[0];
