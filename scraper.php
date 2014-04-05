@@ -3,7 +3,7 @@ require 'scraperwiki.php';
 
 require 'scraperwiki/simple_html_dom.php';
 static $counter = 0;
-//scraperwiki::save_sqlite( array( 'url' ), array( 'count' => $counter, 'url' => 'http://tunein.com' ), 'pages' );
+scraperwiki::save_sqlite( array( 'url' ), array( 'count' => $counter, 'url' => 'http://tunein.com' ), 'pages' );
 //scrape_related('http://tunein.com/radio/Music-g1/');
 
 $counter = scraperwiki::get_var('up_to') + 1;
