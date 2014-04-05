@@ -6,7 +6,7 @@ static $counter = 0;
 scraperwiki::save_sqlite( array( 'url' ), array( 'count' => $counter, 'url' => 'http://tunein.com' ), 'pages' );
 //scrape_related('http://tunein.com/radio/Music-g1/');
 
-$counter = scraperwiki::get_var('up_to') + 40000;
+$counter = scraperwiki::get_var('up_to') + 4;
 
 while( $result = scraperwiki::select( "* from pages where count = '$counter'" ) ) {
     scrape_stations( $result[0]['url'] );
